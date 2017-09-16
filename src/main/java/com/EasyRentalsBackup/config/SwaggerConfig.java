@@ -27,8 +27,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 	private static final String SWAGGER_API_VERSION= "1.0";
 	private static final String LICENSE_TEXT="License";
-	private static final String title="USER REST API";
-	private static final String description="RESTful API for User Signup and Login";
+	private static final String title="REST API Documentation";
+	private static final String description="RESTful API for EasyRentals Application";
 	
 	private ApiInfo apiInfo(){
 	return new ApiInfoBuilder()
