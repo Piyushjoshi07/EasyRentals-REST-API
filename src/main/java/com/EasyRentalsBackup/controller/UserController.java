@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,12 +19,18 @@ import com.EasyRentalsBackup.model.User;
 import com.EasyRentalsBackup.repository.UserRepository;
 import com.EasyRentalsBackup.service.SignupConformationMail;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 
 
 
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value="/EasyRentals")
+@Api(value="ProductControllerAPI", produces=MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
 	String jwtToken = "";
@@ -62,7 +69,9 @@ public class UserController {
 	       return new ResponseEntity<String>("Hello World", HttpStatus.OK);
 	   }
 	   @RequestMapping(value = "/getUserDetails", method= RequestMethod.POST, produces = "application/json")
-	    public String validateUser(@RequestBody User userDtls) {
+	   @ApiOperation("Gets the product with specific id")
+	   @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = User.class)})
+	   public String validateUser(@RequestBody User userDtls) {
 		
 		   logger.info("In validateUserr-->");
 			logger.info("Email Address-->"+userDtls.getEmail());
