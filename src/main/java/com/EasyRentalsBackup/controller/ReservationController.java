@@ -15,7 +15,7 @@ import com.EasyRentalsBackup.repository.ReservationRepository;
 
 
 @RestController
-@RequestMapping("/reservation")
+@RequestMapping("/EasyRentals/reservation")
 public class ReservationController {
 	
 	@Autowired

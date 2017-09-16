@@ -22,7 +22,7 @@ import com.EasyRentalsBackup.service.GeoSearchService;
 @CrossOrigin(origins="*")
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/car")
+@RequestMapping("/EasyRentals/car")
 
 public class CarController implements Serializable{
 	

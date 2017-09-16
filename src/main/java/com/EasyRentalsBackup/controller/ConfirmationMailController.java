@@ -12,7 +12,7 @@ import com.EasyRentalsBackup.model.User;
 import com.EasyRentalsBackup.service.SignupConformationMail;
 
 @RestController
-@RequestMapping("/mail")
+@RequestMapping("/EasyRentals/mail")
 public class ConfirmationMailController {
 
 	private org.slf4j.Logger logger= LoggerFactory.getLogger(ConfirmationMailController.class);

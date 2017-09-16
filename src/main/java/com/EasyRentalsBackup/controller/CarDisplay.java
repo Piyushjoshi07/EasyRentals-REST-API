@@ -16,7 +16,7 @@ import com.EasyRentalsBackup.model.Car;
 
 
 @RestController
-@RequestMapping("/display")
+@RequestMapping("/EasyRentals/display")
 public class CarDisplay implements Serializable {
 
 	private static final long serialVersionUID = 1L;

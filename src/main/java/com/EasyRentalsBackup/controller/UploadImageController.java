@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 @RestController
-@RequestMapping(value="/image")
+@RequestMapping(value="/EasyRentals/image")
 public class UploadImageController {
 	//private final Logger logger = LoggerFactory.getLogger(UploadImageController.class);
 	

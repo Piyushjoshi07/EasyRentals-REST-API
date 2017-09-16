@@ -5,6 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import com.EasyRentalsBackup.controller.CarController;
+import com.EasyRentalsBackup.controller.CarDisplay;
+import com.EasyRentalsBackup.controller.ConfirmationMailController;
+import com.EasyRentalsBackup.controller.ReservationController;
+import com.EasyRentalsBackup.controller.UploadImageController;
 //import com.EasyRentalsBackup.controller.CarController;
 import com.EasyRentalsBackup.controller.UserController;
 
@@ -17,7 +22,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @PropertySource("classpath:swagger.properties")
-@ComponentScan(basePackageClasses= UserController.class )
+@ComponentScan(basePackageClasses={ ReservationController.class ,UserController.class , CarController.class,UploadImageController.class,CarDisplay.class,ConfirmationMailController.class} )
 @Configuration
 public class SwaggerConfig {
 	private static final String SWAGGER_API_VERSION= "1.0";
