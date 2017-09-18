@@ -5,7 +5,7 @@ public class Address {
 
 
 	
-	private String steert;
+	private String street;
 	
 	private String City;
 	
@@ -16,12 +16,14 @@ public class Address {
 	private Location geoLocation;
 
 
-	public String getSteert() {
-		return steert;
+
+
+	public String getStreet() {
+		return street;
 	}
 
-	public void setSteert(String steert) {
-		this.steert = steert;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
 	public String getCity() {
