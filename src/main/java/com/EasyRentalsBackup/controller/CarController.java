@@ -4,6 +4,7 @@ package com.EasyRentalsBackup.controller;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -58,7 +59,7 @@ public class CarController implements Serializable{
 
 	
 	@RequestMapping(value="/findByDistance", method= RequestMethod.GET)
-	public List<Car> findByDistance(@RequestParam(value="long") float longitude, @RequestParam(value="lat") float latitude, @RequestParam(value= "dist") int distance, @RequestParam(value="withDriver") boolean withDriver, @RequestParam(value="withoutDriver") boolean withoutDriver)
+	public List<Car> findByDistance(@RequestParam(value="long") float longitude, @RequestParam(value="lat") float latitude, @RequestParam(value= "dist") int distance, @RequestParam(value="withDriver") boolean withDriver, @RequestParam(value="withoutDriver") boolean withoutDriver, @RequestParam(value="startDate") Date startdate, @RequestParam(value="endDate") Date enddate)
 	{
 		return service.findByDistance(longitude, latitude, distance, withDriver, withoutDriver);
 	}
