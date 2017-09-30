@@ -107,13 +107,13 @@ public class UserController {
 	   }
 	   
 	   @RequestMapping(value="/updateUser", method=RequestMethod.PUT)
-	   public String updateUser(@RequestParam(value="id")Long ID, @RequestBody User user)
+	   public String updateUser(@RequestParam(value="id")String email, @RequestBody User user)
 	   {
 		   
-		   List<User> u= userRepository.findById(ID);
+		   User u= userRepository.findByEmail(email);
 			if(u==null)
 			{
-				System.out.println("Sorry"+ID+"not Found");
+				System.out.println("Sorry"+email+"not Found");
 				
 			}
 			user.setfName(user.getfName());
@@ -122,6 +122,8 @@ public class UserController {
 			user.setPassword(user.getPassword());
 			return "Successfully Updated";
 	   }
+	   
+	   
 
 }
 			

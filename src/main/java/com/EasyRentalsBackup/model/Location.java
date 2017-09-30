@@ -7,7 +7,6 @@ public class Location{
 	private Float longitude;
 	
 	private Float latitude;
-	
 
 	public Float getLongitude() {
 		return longitude;
@@ -24,6 +23,15 @@ public class Location{
 	public void setLatitude(Float latitude) {
 		this.latitude = latitude;
 	}
+
+
+
+
+
+
+
+
+
 
 
 	

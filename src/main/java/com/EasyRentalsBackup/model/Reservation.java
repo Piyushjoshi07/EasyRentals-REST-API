@@ -1,5 +1,6 @@
 package com.EasyRentalsBackup.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -16,50 +17,85 @@ public class Reservation {
 private static AtomicLong COUNTER = new AtomicLong(0L);
     
     @PersistenceConstructor
-    public Reservation() {
+    public Reservation() throws Exception {
         this.id = COUNTER.incrementAndGet();
     }
-      
+     
+private Long contactNum;
 	
-	private Date fromDate;
+	private String licenseNum;
+    
+    String startDate;
+  private  Date string1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startDate);
+	//private Date fromDate;
 	
-	private Date tillDate;
+
+  String endDate;
+private  Date String2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endDate);
+	//private Date tillDate;
 	
-	private Long userId;
 	
-	private Long carId;
 	
-	public Date getFromDate() {
-		return fromDate;
+	
+
+
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public Date getTillDate() {
-		return tillDate;
+	public Date getString1() {
+		return string1;
 	}
 
-	public void setTillDate(Date tillDate) {
-		this.tillDate = tillDate;
+	public void setString1(Date string1) {
+		this.string1 = string1;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
-	public Long getCarId() {
-		return carId;
+	public Date getString2() {
+		return String2;
 	}
 
-	public void setCarId(Long carId) {
-		this.carId = carId;
+	public void setString2(Date string2) {
+		String2 = string2;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Long getContactNum() {
+		return contactNum;
+	}
+
+	public void setContactNum(Long contactNum) {
+		this.contactNum = contactNum;
+	}
+
+	public String getLicenseNum() {
+		return licenseNum;
+	}
+
+	public void setLicenseNum(String licenseNum) {
+		this.licenseNum = licenseNum;
+	}
+
+
 	
 	
 

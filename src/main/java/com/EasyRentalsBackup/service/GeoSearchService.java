@@ -35,8 +35,25 @@ public class GeoSearchService {
 		
 		Query query= new Query();
 		
-		query.addCriteria(Criteria.where("address.geoLocation").withinSphere(area).and("withDriver").is(withDriver).and("withoutDriver").is(withoutDriver));
+		if(withDriver==true && withoutDriver==false )
+		{
+		query.addCriteria(Criteria.where("address.geoLocation").withinSphere(area).and("withDriver").is(withDriver));
 		return mongoOperations.find(query, Car.class);
+		}
+		else if(withDriver==false && withoutDriver==true)
+		{
+		query.addCriteria(Criteria.where("address.geoLocation").withinSphere(area).and("withoutDriver").is(withoutDriver));
+		return mongoOperations.find(query, Car.class);
+		}
+		else if(withDriver==true && withoutDriver==true)
+		{
+		query.addCriteria(Criteria.where("address.geoLocation").withinSphere(area));
+		return mongoOperations.find(query, Car.class);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	

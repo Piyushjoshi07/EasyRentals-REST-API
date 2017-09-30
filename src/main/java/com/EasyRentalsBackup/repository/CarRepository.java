@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.EasyRentalsBackup.model.Car;
 //import com.mongodb.client.model.geojson.Point;
 @Repository
-public interface CarRepository extends MongoRepository<Car, Long>{
+public interface CarRepository extends MongoRepository<Car, String>{
 //List<Car> findByLocation(String location);
 //List<Car> findByzipcode(Long zipcode);
 /*List<Car> findByStyle(String style);
@@ -24,7 +24,8 @@ List<Car> findAllCar();*/
 List<Car> findByYear(String year);
 
 List<Car> findByStyle(String string);
-
+List<Car> findByContactNum(Long contactNum);
+List<Car> findByLicenseNum(String licenseNum);
 
 	//List<Car> find(Query query, Class<Car> class1);
 }

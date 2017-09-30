@@ -1,24 +1,15 @@
 package com.EasyRentalsBackup.model;
 
 import java.io.Serializable;
-import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	
-    private Long id;
-	
-private static AtomicLong COUNTER = new AtomicLong(0L);
+	private Long contactNum;
     
-    @PersistenceConstructor
-    public User() {
-        this.id = COUNTER.incrementAndGet();
-    }
         
     private String fName;
  
@@ -29,14 +20,16 @@ private static AtomicLong COUNTER = new AtomicLong(0L);
      private String password;
 
      
-     
-	public Long getId() {
-		return id;
+
+
+
+	public Long getContactNum() {
+		return contactNum;
 	}
 
-	/*public void setId(Long id) {
-		this.id = id;
-	}*/
+	public void setContactNum(Long contactNum) {
+		this.contactNum = contactNum;
+	}
 
 	public String getfName() {
 		return fName;

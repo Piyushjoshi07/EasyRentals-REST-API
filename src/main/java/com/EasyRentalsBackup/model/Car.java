@@ -1,11 +1,7 @@
 package com.EasyRentalsBackup.model;
 
 import java.io.Serializable;
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
-//import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="car")
@@ -16,23 +12,17 @@ public class Car implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 
-	@Id
-	private Long id;
-	
-	
-private static AtomicLong COUNTER = new AtomicLong(0L);
-    
-    @PersistenceConstructor
-    public Car() {
-        this.id = COUNTER.incrementAndGet();
-    }
-	
-	
-    private long phoneNumber;
+
+	private Long contactNum;
     
 	private Address address;
 	
+	@Id
+	private String licenseNum;
+	
 	private String drivingLicenseNumber;
+	
+	private String DrivingLicenseState;
 	
 	private String year;
 	
@@ -66,13 +56,17 @@ private static AtomicLong COUNTER = new AtomicLong(0L);
 	
 	private String maximumDistance;
 
-	public long getPhoneNumber() {
-		return phoneNumber;
+
+
+	public Long getContactNum() {
+		return contactNum;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
-		this.phoneNumber = phoneNumber;
+
+	public void setContactNum(Long contactNum) {
+		this.contactNum = contactNum;
 	}
+
 
 	public Address getAddress() {
 		return address;
@@ -82,12 +76,34 @@ private static AtomicLong COUNTER = new AtomicLong(0L);
 		this.address = address;
 	}
 
+	
+	
+	public String getLicenseNum() {
+		return licenseNum;
+	}
+
+
+	public void setLicenseNum(String licenseNum) {
+		this.licenseNum = licenseNum;
+	}
+
+
 	public String getDrivingLicenseNumber() {
 		return drivingLicenseNumber;
 	}
 
 	public void setDrivingLicenseNumber(String drivingLicenseNumber) {
 		this.drivingLicenseNumber = drivingLicenseNumber;
+	}
+	
+	
+
+	public String getDrivingLicenseState() {
+		return DrivingLicenseState;
+	}
+
+	public void setDrivingLicenseState(String drivingLicenseState) {
+		DrivingLicenseState = drivingLicenseState;
 	}
 
 	public String getYear() {
@@ -223,7 +239,7 @@ private static AtomicLong COUNTER = new AtomicLong(0L);
 
 	@Override
 	public String toString() {
-		return "CarDetails [phoneNumber=" + phoneNumber + ", address=" + address + ", drivingLicenseNumber="
+		return "CarDetails [contactNum=" + contactNum + ", address=" + address + ", drivingLicenseNumber="
 				+ drivingLicenseNumber + ", year=" + year + ", make=" + make + ", model=" + model + ", transmission="
 				+ transmission + ", odometer=" + odometer + ", style=" + style + ", GPS=" + GPS + ", hybrid=" + hybrid
 				+ ", petFriendly=" + petFriendly + ", bluetooth=" + bluetooth + ", audioPlayer=" + audioPlayer

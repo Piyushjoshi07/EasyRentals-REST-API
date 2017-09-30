@@ -4,7 +4,6 @@ package com.EasyRentalsBackup.controller;
 
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -16,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.EasyRentalsBackup.model.Car;
+import com.EasyRentalsBackup.model.Reservation;
 import com.EasyRentalsBackup.repository.CarRepository;
+import com.EasyRentalsBackup.repository.ReservationRepository;
 import com.EasyRentalsBackup.service.GeoSearchService;
 
 
@@ -33,21 +34,26 @@ public class CarController implements Serializable{
 	private CarRepository carRepository;
 	
 	@Autowired
+	private ReservationRepository reservationRepository;
+	
+	@Autowired
 	private GeoSearchService service;
 	
-	@RequestMapping(value="/listyourcar", method=RequestMethod.POST )
+	@RequestMapping(value="/listyourcar", method=RequestMethod.PUT )
 	public String addcar(@RequestBody Car listyourcar)
 	{
 		carRepository.save(listyourcar);
 		return "{\"Value\":\"Saved\"}";
 	}	
-	
-	/*@RequestMapping( value="/getCarList/{zipcode}")
-	public List<Car> getCarDetails(@PathVariable(value="zipcode") Long zipcode ) 
+
+	@RequestMapping(value="/deleteCar", method= RequestMethod.DELETE)
+	public String deleteCar(@RequestParam(value="licenseNum") String licenseNum)
 	{
-	List<Car> carDetails=(List<Car>)carRepository.findByzipcode(zipcode);
-	return carDetails;
-	}*/
+		carRepository.delete(licenseNum);
+		
+		return "{\"value\":\"Deleted successfully\"}";
+		
+	}
 	
 	
 	@RequestMapping(value="/getCarList", method = RequestMethod.GET)
@@ -59,10 +65,27 @@ public class CarController implements Serializable{
 
 	
 	@RequestMapping(value="/findByDistance", method= RequestMethod.GET)
-	public List<Car> findByDistance(@RequestParam(value="long") float longitude, @RequestParam(value="lat") float latitude, @RequestParam(value= "dist") int distance, @RequestParam(value="withDriver") boolean withDriver, @RequestParam(value="withoutDriver") boolean withoutDriver, @RequestParam(value="startDate") Date startdate, @RequestParam(value="endDate") Date enddate)
+	public List<Car> findByDistance(@RequestParam(value="long") float longitude, @RequestParam(value="lat") float latitude, @RequestParam(value= "dist") int distance, @RequestParam(value="withDriver") boolean withDriver, @RequestParam(value="withoutDriver") boolean withoutDriver, @RequestParam(value="startDate") String startdate, @RequestParam(value="endDate") String enddate)
 	{
-		return service.findByDistance(longitude, latitude, distance, withDriver, withoutDriver);
+		List<Car> filteredCar= service.findByDistance(longitude, latitude, distance, withDriver, withoutDriver);
+		List<Reservation> reservationDoc= reservationRepository.findAll();
+		
+		for(int i=0;i<=filteredCar.size();i++)
+		{
+			for(int j=0; j<=reservationDoc.size();j++)
+			{
+			
+			}	
+		}
+		return filteredCar;
 	}
 	
+	
+	@RequestMapping(value="/findByUser", method= RequestMethod.GET)
+	public List<Car> findByUser(@RequestParam(value="contactNum") Long contactNum)
+	{
+		List<Car> userCar= carRepository.findByContactNum(contactNum);
+		return userCar;
+	}
 	
 	}
